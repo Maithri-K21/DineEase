@@ -1,57 +1,132 @@
-<<<<<<< HEAD
-# DineEase - Restaurant Booking Chatbot
+# 🍽️ DineEase –Restaurant Booking Chatbot
 
-A chat-first restaurant reservation demo built with Python, Flask, SQLite, and plain HTML/CSS/JavaScript. There is no restaurant homepage; opening the app takes you straight to the chatbot.
+DineEase is a web-based restaurant booking chatbot designed to simplify table reservations and help customers explore an Indian restaurant menu through an interactive chat interface.
 
-## Current features
+The chatbot allows customers to book tables, check availability, manage reservations, browse Indian dishes, and receive basic meal suggestions.
 
-- Guided reservation conversation with validation for name, phone, party size, date, and time.
-- Date picker prevents past selections using India Standard Time. Dates are stored as `YYYY-MM-DD` and shown to customers as `DD-MM-YYYY`.
-- SQLite-backed availability using six sample tables, with a transaction to avoid assigning a table twice for the same seating time.
-- Unique booking IDs, booking lookup, and cancellation (verified with the booking ID and phone number).
-- Searchable Indian menu with 27 dishes, category and dietary filters, INR prices, availability, descriptions, and food photography.
-- Simple meal suggestions based on available menu items and prices, plus basic restaurant hours/location answers.
-- Friendly fallback replies for unknown requests and invalid inputs.
+## ✨ Features
 
-Menu prices, images, and restaurant details are demo data. Food pre-orders, customer/admin dashboards, and deployment are later stages; no paid AI service is used.
+### 1. Restaurant Booking Chatbot
+- Interactive chatbot interface.
+- Collects customer name and phone number.
+- Accepts number of guests, booking date and time.
+- Checks table availability.
+- Generates a unique booking ID.
+- Provides alternative time suggestions when tables are unavailable.
 
-## Run locally on Windows
+### 2. Reservation Management
+- Check existing reservations using a booking ID.
+- Cancel existing bookings.
+- Prevent double bookings.
+- Validate booking dates.
+- Display booking dates in DD-MM-YYYY format.
+- Uses Indian Standard Time (IST) for date validation.
 
-1. Open a terminal in this project folder.
-2. Create and activate a virtual environment:
+### 3. Indian Food Menu
+Explore a variety of Indian dishes, including:
 
-   ```powershell
-   py -m venv .venv
-   .\.venv\Scripts\Activate.ps1
-   ```
+- **South Indian:** Masala Dosa, Idli Sambar, Medu Vada, Uttapam.
+- **North Indian:** Paneer Butter Masala, Dal Makhani, Butter Naan.
+- **Non-Vegetarian:** Chicken Biryani, Butter Chicken, Chicken 65.
+- **Beverages:** Filter Coffee, Masala Chai, Mango Lassi.
+- **Desserts:** Gulab Jamun, Rasmalai, Kulfi.
 
-3. Install Flask:
+Customers can search dishes and filter the menu by category and dietary preference.
 
-   ```powershell
-   py -m pip install -r requirements.txt
-   ```
+### 4. Meal Suggestions
+Provides basic meal suggestions based on customer preferences and available menu information.
 
-4. Start the chatbot:
+## 🛠️ Technologies Used
 
-   ```powershell
-   py app.py
-   ```
+| Technology | Purpose |
+|---|---|
+| Python | Backend programming |
+| Flask | Web application framework |
+| HTML5 | Webpage structure |
+| CSS3 | Styling and responsive design |
+| JavaScript | Chatbot interactions |
+| SQLite | Database management |
 
-5. Open http://127.0.0.1:5000 in your browser.
+## 📁 Project Structure
 
-SQLite creates `instance/dineease.sqlite3` the first time the app starts. Use **Ctrl+C** in the terminal to stop it. To use a non-default session key locally, set it before starting Flask:
+```text
+DineEase/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+│
+├── static/
+│   ├── app.css
+│   └── app.js
+│
+├── templates/
+│   └── index.html
+│
+└── tests/
+    └── test_app.py
+```
+
+## ⚙️ Installation and Setup
+
+### Prerequisites
+- Python 3.10 or above
+- Git
+- Visual Studio Code
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/Maithri-K21/DineEase.git
+```
+
+### Step 2: Open the Project
+
+```bash
+cd DineEase
+```
+
+### Step 3: Create a Virtual Environment
+
+```bash
+py -m venv .venv
+```
+
+### Step 4: Activate the Environment
+
+Windows PowerShell:
 
 ```powershell
-$env:DINEEASE_SECRET_KEY = "replace-with-a-long-random-value"
+.\.venv\Scripts\Activate.ps1
+```
+
+### Step 5: Install Dependencies
+
+```bash
+py -m pip install -r requirements.txt
+```
+
+### Step 6: Run the Application
+
+```bash
 py app.py
 ```
 
-## Run tests
+### Step 7: Open in Browser
 
-```powershell
+Visit:
+
+http://127.0.0.1:5000
+
+## 🧪 Testing
+
+Run the following command to execute the project tests:
+
+```bash
 py -m unittest discover -s tests -v
-```
-=======
-# DineEase
-Restaurant Booking Chatbot – A smart chatbot for table reservations, menu exploration, and food recommendations.
->>>>>>> 5d95404f15c9566297b5020222a985fc5d5c45dd
+``
+
+---
+
+*DineEase – Making restaurant reservations simpler, smarter and more convenient.*
