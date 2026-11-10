@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <title>DineEase | Table reservations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+  <main class="chat-shell" aria-label="DineEase restaurant booking chatbot">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="DineEase chat home">
+        <span class="brand-mark" aria-hidden="true">D</span>
+        <span>DineEase</span>
+      </a>
+      <div class="restaurant-status"><span class="status-dot"></span> Reservations open</div>
+    </header>
+
+    <section class="conversation" aria-label="Conversation">
+      <div class="date-label">YOUR TABLE, MADE SIMPLE</div>
+      <div class="message-row bot-row">
+        <div class="bot-avatar" aria-hidden="true">D</div>
+        <div class="message bot-message">
+          <p>Welcome to DineEase. I can help you book a table, check or cancel a reservation, explore the menu, or answer a few questions.</p>
+          <span class="message-time">Just now</span>
+        </div>
+      </div>
+      <div class="quick-actions" aria-label="Suggested actions">
+        <button type="button" data-prompt="Book a table">Book a table <span aria-hidden="true">↗</span></button>
+        <button type="button" data-prompt="Show me the menu">View menu <span aria-hidden="true">↗</span></button>
+        <button type="button" data-prompt="Check booking">Check a booking <span aria-hidden="true">↗</span></button>
+      </div>
+      <div id="messages" class="messages" aria-live="polite" aria-relevant="additions text"></div>
+    </section>
+
+    <section id="menu-panel" class="menu-panel" aria-label="Indian restaurant menu" hidden>
+      <div class="menu-heading">
+        <div>
+          <p class="menu-eyebrow">DINEEASE KITCHEN</p>
+          <h1>Made with spice.<br>Served with warmth.</h1>
+        </div>
+        <button id="back-to-chat" class="back-button" type="button">← Back to chat</button>
+      </div>
+      <div class="menu-toolbar">
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <span class="visually-hidden">Search dishes</span>
+          <input id="menu-search" type="search" placeholder="Search dishes or ingredients">
+        </label>
+        <label class="category-select-label">
+          <span class="visually-hidden">Filter by category</span>
+          <select id="menu-category">
+            <option value="all">All categories</option>
+            <option>South Indian</option>
+            <option>North Indian</option>
+            <option>Starters &amp; snacks</option>
+            <option>Beverages</option>
+            <option>Desserts</option>
+          </select>
+        </label>
+        <label class="category-select-label">
+          <span class="visually-hidden">Filter by dietary preference</span>
+          <select id="menu-diet">
+            <option value="all">Veg &amp; non-veg</option>
+            <option value="veg">Vegetarian</option>
+            <option value="nonveg">Non-vegetarian</option>
+          </select>
+        </label>
+      </div>
+      <div id="menu-count" class="menu-count" aria-live="polite"></div>
+      <div id="menu-grid" class="menu-grid" aria-live="polite"></div>
+      <p id="menu-error" class="menu-error" role="status" hidden></p>
+    </section>
+
+    <div id="date-selection" class="date-selection" aria-live="polite" hidden></div>
+    <form id="chat-form" class="composer">
+      <label class="visually-hidden" for="message-input">Your message</label>
+      <input id="message-input" name="message" autocomplete="off" placeholder="Type a message..." maxlength="600" required>
+      <button id="send-button" type="submit" aria-label="Send message" title="Send message">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-5 16-3-7-8-1Zm8 1 4-5"/></svg>
+      </button>
+    </form>
+    <footer class="footnote"><span class="lock-icon" aria-hidden="true">◈</span> Your reservation details stay private</footer>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
