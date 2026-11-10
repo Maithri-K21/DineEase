@@ -87,33 +87,19 @@ git clone https://github.com/Maithri-K21/DineEase.git
 cd DineEase
 ```
 
-### Step 3: Create a Virtual Environment
-
-```bash
-py -m venv .venv
-```
-
-### Step 4: Activate the Environment
-
-Windows PowerShell:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-### Step 5: Install Dependencies
+### Step 3: Install Dependencies
 
 ```bash
 py -m pip install -r requirements.txt
 ```
 
-### Step 6: Run the Application
+### Step 4: Run the Application
 
 ```bash
 py app.py
 ```
 
-### Step 7: Open in Browser
+### Step 5: Open in Browser
 
 Visit:
 
