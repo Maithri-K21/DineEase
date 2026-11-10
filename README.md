@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DineEase - Restaurant Booking Chatbot
 
 A chat-first restaurant reservation demo built with Python, Flask, SQLite, and plain HTML/CSS/JavaScript. There is no restaurant homepage; opening the app takes you straight to the chatbot.
@@ -50,3 +51,7 @@ py app.py
 ```powershell
 py -m unittest discover -s tests -v
 ```
+=======
+# DineEase
+Restaurant Booking Chatbot – A smart chatbot for table reservations, menu exploration, and food recommendations.
+>>>>>>> 5d95404f15c9566297b5020222a985fc5d5c45dd
