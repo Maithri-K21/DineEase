@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css', v=4) }}">
 </head>
 <body>
   <main class="chat-shell" aria-label="DineEase restaurant booking chatbot">
@@ -25,13 +25,14 @@
       <div class="message-row bot-row">
         <div class="bot-avatar" aria-hidden="true">D</div>
         <div class="message bot-message">
-          <p>Welcome to DineEase. I can help you book a table, check or cancel a reservation, explore the menu, or answer a few questions.</p>
+          <p>Welcome to DineEase. Ask about menu items and ingredients, manage your cart, place a demo order, or book a table.</p>
           <span class="message-time">Just now</span>
         </div>
       </div>
       <div class="quick-actions" aria-label="Suggested actions">
         <button type="button" data-prompt="Book a table">Book a table <span aria-hidden="true">↗</span></button>
         <button type="button" data-prompt="Show me the menu">View menu <span aria-hidden="true">↗</span></button>
+        <button type="button" data-action="show-cart">My cart <span aria-hidden="true">↗</span></button>
         <button type="button" data-prompt="Check booking">Check a booking <span aria-hidden="true">↗</span></button>
       </div>
       <div id="messages" class="messages" aria-live="polite" aria-relevant="additions text"></div>
@@ -73,7 +74,29 @@
       </div>
       <div id="menu-count" class="menu-count" aria-live="polite"></div>
       <div id="menu-grid" class="menu-grid" aria-live="polite"></div>
+      <section class="order-panel" aria-label="Your food order">
+        <h2>Your order</h2>
+        <div id="cart-items" class="cart-items" aria-live="polite">Your cart is empty.</div>
+        <div class="checkout-controls">
+          <label>
+            <span>Order type</span>
+            <select id="order-type">
+              <option value="delivery">Delivery (demo)</option>
+              <option value="pickup">Pickup</option>
+            </select>
+          </label>
+          <label>
+            <span>Requested arrival / pickup time (IST)</span>
+            <input id="requested-arrival" type="datetime-local">
+          </label>
+          <button id="place-order" class="menu-order-button" type="button">Place demo order</button>
+        </div>
+        <p class="order-disclaimer">Demo only: no payment, dispatch, or guaranteed arrival. The time is a request; the estimate is not live tracking.</p>
+        <p id="checkout-result" class="checkout-result" role="status" hidden></p>
+        <p id="order-error" class="menu-error" role="status" hidden></p>
+      </section>
       <p id="menu-error" class="menu-error" role="status" hidden></p>
+      <button id="retry-menu" class="back-button" type="button" hidden>Retry menu</button>
     </section>
 
     <div id="date-selection" class="date-selection" aria-live="polite" hidden></div>
@@ -84,8 +107,8 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-5 16-3-7-8-1Zm8 1 4-5"/></svg>
       </button>
     </form>
-    <footer class="footnote"><span class="lock-icon" aria-hidden="true">◈</span> Your reservation details stay private</footer>
+    <footer class="footnote"><span class="lock-icon" aria-hidden="true">◈</span> <span id="service-note">Demo orders only · No payment or live delivery tracking</span></footer>
   </main>
-  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='app.js', v=4) }}" defer></script>
 </body>
 </html>

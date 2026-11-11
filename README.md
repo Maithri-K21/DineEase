@@ -1,8 +1,8 @@
 # 🍽️ DineEase –Restaurant Booking Chatbot
 
-DineEase is a web-based restaurant booking chatbot designed to simplify table reservations and help customers explore an Indian restaurant menu through an interactive chat interface.
+DineEase is a web-based restaurant assistant for table reservations, AI-assisted menu questions, and demo food orders.
 
-The chatbot allows customers to book tables, check availability, manage reservations, browse Indian dishes, and receive basic meal suggestions.
+The assistant can answer menu questions, build a cart from natural-language requests, and create demo orders.
 
 ## ✨ Features
 
@@ -33,8 +33,34 @@ Explore a variety of Indian dishes, including:
 
 Customers can search dishes and filter the menu by category and dietary preference.
 
-### 4. Meal Suggestions
-Provides basic meal suggestions based on customer preferences and available menu information.
+### 4. AI and Rule-Based Chat
+- With an OpenAI API key, the assistant uses the current menu and order context to answer questions and interpret natural-language requests.
+- Without a key, or when the AI service is temporarily unavailable, a rule-based assistant still answers supported menu questions, lists typical ingredients, manages the cart, and guides demo checkout.
+- Both paths use the restaurant's stored menu and validate cart items against the database; unsupported facts are not guessed.
+
+### 5. AI Food Ordering (Demo)
+- Ask for available menu items in natural language, review or edit the cart, and explicitly confirm checkout.
+- Search menu items by name, description, category, or ingredient; each card shows its dish photo, price, ingredients, and preparation estimate.
+- Select a quantity per dish, choose delivery or pickup, and enter a requested arrival/pickup time before placing an order.
+- Demo orders are stored in SQLite and can be checked or cancelled in the same chat.
+- Pickup-ready and delivery time windows are estimates only; no payment, restaurant dispatch, courier integration, or live tracking is provided.
+- Ingredient lists are typical recipe information, not allergy guarantees. Customers with allergies must confirm with restaurant staff.
+
+## OpenAI Configuration
+
+The AI assistant requires an OpenAI API key. Keep it on the server and never put it in browser code or commit it to the repository.
+
+Windows PowerShell (for the current terminal session):
+
+```powershell
+$env:OPENAI_API_KEY = "your-key"
+$env:OPENAI_MODEL = "gpt-4o-mini" # optional
+py app.py
+```
+
+Without a key, the rule-based assistant and reservation flows remain available. Configuring a key enables open-ended AI responses; if the AI service fails, supported requests fall back to the rule-based assistant.
+
+The demo estimates kitchen preparation from each dish's preparation-time value. Delivery estimates add a fixed 20–30 minute illustrative travel allowance; they are not based on a real restaurant or courier and should not be used as a real arrival commitment. The chosen arrival/pickup time is a request, not a confirmed time.
 
 ## 🛠️ Technologies Used
 
